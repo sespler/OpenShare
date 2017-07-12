@@ -1,0 +1,82 @@
+<% include ./partials/header %>
+
+<div class="ui grid">
+  <div class="row">
+    <!-- Make a border around everything -->
+    <div class="three wide column"></div>
+    <div class="ten wide column">
+
+      <!-- displaying the post-->
+      <div class="ui container ">
+        <div class="ui grid">
+
+          <!-- top part of the post (image, title, author)-->
+          <div class="ui row">
+            <!-- the picture part-->
+            <div class="six wide column">
+              <img src="<%= post.image %>">
+            </div>
+            <!-- title (and likes and other stuff in the future) -->
+            <div class="six wide column">
+              <h1><%= post.author%></h1>
+              <!-- DELETE FORM-->
+              <form action="/posts/<%= post.id %>" method="POST">
+                <input type="submit" value="Delete" class="ui primary basic button">
+              </form>
+
+              <!-- UPDATE FORM -->
+              <form action="/posts/<%= post.id %>/edit" method="GET">
+                <input type="submit" value="Update" class="ui primary basic button">
+              </form>
+              <div class="ui labeled button">
+                <div class="ui red button">
+                  <i class="heart icon"></i>Like
+                </div>
+                <div class="ui basic red left pointing label" id="likeButton" >
+                  2,000
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content section -->
+          <div class="ui row">
+            <h3><%= post.description%></h3>
+          </div>
+
+          <!-- Make a comment section -->
+          <div class="ui row">
+            <div class="ui container">
+              <form action="/comments/new/<%= post.id %>" method="POST" class="ui form">
+                <div class="two fields">
+                  <div class="twelve wide field">
+                    <input type="text" placeholder="Write your comment here.." name="comment[content]">                    
+                  </div>
+                  <div class="four wide field">
+                    <input type="text" placeholder="Name here" name="comment[author]">                    
+                  </div>
+                </div>
+                <input type="submit" value="Post!" class="ui primary basic button">
+              </form>
+            </div>
+          </div>
+
+          <!-- comment section -->
+          <div class="ui row">
+            <% comments.forEach(function(comment){ %>
+              <div class="ui container segment">
+                <h3><%= comment.author %></h3>
+                <h5><%= comment.content %></h5>
+
+              </div>
+
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="three wide column"></div>    
+  </div>
+</div>
+
+<% include ./partials/footer %>

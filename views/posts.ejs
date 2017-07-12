@@ -1,0 +1,40 @@
+<% include ./partials/header %>
+
+<div class="ui container">
+    <div class="ui grid">
+
+        <!-- for each post found -->
+        <% posts.forEach(function(post){ %>
+            <div class="row">
+                <!-- these two div's three wide basically makes a border around the post-->
+                <div class="two wide column"></div>
+                <div class="twelve wide column">
+
+                    <!-- the actual post content-->
+                    <div class="row ui container segment">
+                        <!-- make content control with making another row in a row w/ columns-->
+                        <div class="ui grid">
+                            <div class="row">
+                                <div class="nine wide column">
+                                    <img src="<%= post.image %>" class="postImage">
+                                </div>
+                                <div class="seven wide column">
+                                    <p class=""><strong> <%= post.author %>:</strong></p></b>
+                                    <p class="postDescription"><%= post.description %></p>
+                                    <a href="/posts/<%= post.id %>"><button class="ui primary basic button">More details</button></a>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="two wide column"></div>
+            </div>
+        <% }); %>
+
+    </div>
+</div>
+
+<% include ./partials/footer %>
+
+   

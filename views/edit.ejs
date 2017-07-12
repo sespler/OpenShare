@@ -1,0 +1,31 @@
+<% include ./partials/header %>
+
+
+<div class="ui grid">
+    <div class="row">
+        <div class="four wide column"></div>
+        <div class="eight wide column">
+            <form action="/posts/<%= post.id %>/update" method="POST" class="ui form">
+                <div class="field">
+                    <label>Description of the Post</label>
+                    <textarea name="post[description]" rows="5"><%= post.description %></textarea>
+                </div>
+                <div class="field">
+                    <label>Name of Poster</label>
+                    <input type="text" name="post[author]" value="<%= post.author%>">
+                </div> 
+                <div class="field">
+                    <label>Url of Picture</label>
+                    <input type="text" name="post[image]" value="<%= post.image%>">
+                </div> 
+                <input type="submit" value="Update!" class="ui primary basic button">
+            </form>
+        </div>
+        <div class="four wide column"></div>
+    </div>
+</div>
+
+
+
+
+<% include ./partials/footer %>

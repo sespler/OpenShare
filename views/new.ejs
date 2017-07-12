@@ -1,0 +1,33 @@
+<% include ./partials/header %>
+
+
+<div class="ui grid">
+    <div class="row">
+        <div class="four wide column"></div>
+        <div class="eight wide column">
+            <form action="/posts" method="POST" class="ui form">
+                <div class="field">
+                    <label>Description of the Post</label>
+                    <textarea name="post[description]" rows="5" maxlength="1000000"></textarea>
+                </div>
+                <div class="field">
+                    <label>Name of Poster</label>
+                    <input type="text" name="post[author]" placeholder="Ex. Seth Harlaar">
+                </div> 
+                <div class="field">
+                    <label>Url of Picture</label>
+                    <input type="text" name="post[image]" placeholder="Ex. www.w3schools.com/css/img_..." maxlength="10000">
+                </div> 
+                <input type="submit" value="Post!" class="ui primary basic button">
+            </form>
+        </div>
+        <div class="four wide column"></div>
+    </div>
+</div>
+
+
+
+
+
+
+<% include ./partials/footer %>
